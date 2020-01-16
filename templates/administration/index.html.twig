@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration index{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Administration</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom et Prénom</th>
+                <th>Image</th>
+                <th>Region</th>
+                <th>Localite</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for administration in administrations %}
+            <tr>
+                <td>{{ administration.id }}</td>
+                <td>{{ administration.nom }}</td>
+                <td><img src="{{ vich_uploader_asset(administration.image, 'file') }}" class="img-thumbnail"/></td>
+                <td>{{ administration.region }}</td>
+                <td>{{ administration.localite }}</td>
+                <td>{{ administration.longitude }}</td>
+                <td>{{ administration.latitude }}</td>
+                <td>{{ administration.email }}</td>
+                <td>{{ administration.service }}</td>
+
+                <td>
+                    <a href="{{ path('administration_show', {'id': administration.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    </div>
+{% endblock %}

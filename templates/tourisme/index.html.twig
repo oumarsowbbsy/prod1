@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tourisme index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Tourisme </h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Region</th>
+                <th>Departement</th>
+                <th>Commune</th>
+                <th>Localite</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tourisme in tourismes %}
+                <tr>
+                    <td>{{ tourisme.id }}</td>
+                    <td>{{ tourisme.nom }}</td>
+                    <td>{{ tourisme.region }}</td>
+                    <td>{{ tourisme.departement }}</td>
+                    <td>{{ tourisme.commune }}</td>
+                    <td>{{ tourisme.localite }}</td>
+                    <td>{{ tourisme.type }}</td>
+                    <td><img src="{{ vich_uploader_asset(tourisme.image, 'file') }}" class="img-thumbnail"/></td>
+
+                    <td>
+                        <a href="{{ path('tourisme_show', {'id': tourisme.id}) }}">show</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="15">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

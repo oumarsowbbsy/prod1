@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Education index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Education index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Region</th>
+                <th>Departement</th>
+                <th>Commune</th>
+                <th>Localite</th>
+                <th>Type</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Image:</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for education in education %}
+                <tr>
+                    <td>{{ education.id }}</td>
+                    <td>{{ education.nom }}</td>
+                    <td>{{ education.region }}</td>
+                    <td>{{ education.departement }}</td>
+                    <td>{{ education.commune }}</td>
+                    <td>{{ education.localite }}</td>
+                    <td>{{ education.type }}</td>
+                    <td>{{ education.latitude }}</td>
+                    <td>{{ education.longitude }}</td>
+                    <td>{{ education.telephone }}</td>
+                    <td><img src="{{ vich_uploader_asset(education.image, 'file') }}" class="img-thumbnail"/></td>
+                    <td>{{ education.email }}</td>
+                    <td>
+                        <a href="{{ path('education_show', {'id': education.id}) }}">show</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="15">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('education_new') }}">Create new</a>
+    </div>
+{% endblock %}

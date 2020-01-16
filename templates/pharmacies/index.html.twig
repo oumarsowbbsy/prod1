@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pharmacies index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Pharmacies index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Region</th>
+                <th>Departement</th>
+                <th>Commune</th>
+                <th>Localite</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Telephone</th>
+                <th>Image</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for pharmacy in pharmacies %}
+                <tr>
+                    <td>{{ pharmacy.id }}</td>
+                    <td>{{ pharmacy.nom }}</td>
+                    <td>{{ pharmacy.region }}</td>
+                    <td>{{ pharmacy.departement }}</td>
+                    <td>{{ pharmacy.commune }}</td>
+                    <td>{{ pharmacy.localite }}</td>
+                    <td>{{ pharmacy.latitude }}</td>
+                    <td>{{ pharmacy.longitude }}</td>
+                    <td>{{ pharmacy.telephone }}</td>
+                    <td><img src="{{ vich_uploader_asset(pharmacy.image, 'file') }}" class="img-thumbnail"/></td>
+                    <td>{{ pharmacy.email }}</td>
+
+                    <td>
+                        <a href="{{ path('pharmacies_show', {'id': pharmacy.id}) }}">show</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

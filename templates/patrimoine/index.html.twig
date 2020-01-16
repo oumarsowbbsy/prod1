@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patrimoine index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Patrimoine index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Region</th>
+                <th>Departement</th>
+                <th>Commune</th>
+                <th>Localite</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Telephone</th>
+                <th>Image</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for patrimoine in patrimoines %}
+                <tr>
+                    <td>{{ patrimoine.id }}</td>
+                    <td>{{ patrimoine.nom }}</td>
+                    <td>{{ patrimoine.region }}</td>
+                    <td>{{ patrimoine.departement }}</td>
+                    <td>{{ patrimoine.commune }}</td>
+                    <td>{{ patrimoine.localite }}</td>
+                    <td>{{ patrimoine.latitude }}</td>
+                    <td>{{ patrimoine.longitude }}</td>
+                    <td>{{ patrimoine.telephone }}</td>
+                    <td><img src="{{ vich_uploader_asset(patrimoine.image, 'file') }}" class="img-thumbnail"/></td>
+                    <td>{{ patrimoine.email }}</td>
+
+                    <td>
+                        <a href="{{ path('patrimoine_show', {'id': patrimoine.id}) }}">show</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

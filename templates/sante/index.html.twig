@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sante index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Sante index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Region</th>
+                <th>Departement</th>
+                <th>Localite</th>
+                <th>Type</th>
+                <th>Nom</th>
+                <th>Image</th>
+
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sante in santes %}
+                <tr>
+                    <td>{{ sante.id }}</td>
+                    <td>{{ sante.region }}</td>
+                    <td>{{ sante.departement }}</td>
+                    <td>{{ sante.localite }}</td>
+                    <td>{{ sante.type }}</td>
+                    <td>{{ sante.nom }}</td>
+                    <td><img src="{{ vich_uploader_asset(sante.image, 'file') }}" class="img-thumbnail"/></td>
+
+                    <td>
+                        <a href="{{ path('sante_show', {'id': sante.id}) }}">show</a>
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

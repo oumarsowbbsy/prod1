@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patrimoine{% endblock %}
+
+{% block body %}
+    <h1>Patrimoine</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ patrimoine.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ patrimoine.nom }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ patrimoine.region }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ patrimoine.departement }}</td>
+            </tr>
+            <tr>
+                <th>Commune</th>
+                <td>{{ patrimoine.commune }}</td>
+            </tr>
+            <tr>
+                <th>Localite</th>
+                <td>{{ patrimoine.localite }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ patrimoine.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ patrimoine.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ patrimoine.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ patrimoine.email }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ patrimoine.heure }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ patrimoine.website }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ patrimoine.service }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('patrimoine_index') }}">back to list</a>
+
+    <a href="{{ path('patrimoine_edit', {'id': patrimoine.id}) }}">edit</a>
+
+    {{ include('patrimoine/_delete_form.html.twig') }}
+{% endblock %}

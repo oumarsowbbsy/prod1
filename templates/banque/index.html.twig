@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Banque index{% endblock %}
+
+{% block body %}
+   <div class="container">
+       <h1>Banque index</h1>
+
+       <table class="table">
+           <thead>
+           <tr>
+               <th>Id</th>
+
+               <th>Nom et Prénom</th>
+               <th>Region</th>
+               <th>Departement</th>
+               <th>Commune</th>
+               <th>Localite</th>
+               <th>Telephone</th>
+               <th>Image</th>
+               <th>Email</th>
+
+
+               <th>actions</th>
+           </tr>
+           </thead>
+           <tbody>
+           {% for banque in banques %}
+               <tr>
+                   <td>{{ banque.id }}</td>
+                   <td>{{ banque.nom }}</td>
+                   <td>{{ banque.region }}</td>
+                   <td>{{ banque.departement }}</td>
+                   <td>{{ banque.commune }}</td>
+                   <td>{{ banque.localite }}</td>
+                   <td>{{ banque.telephone }}</td>
+                   <td><img src="{{ vich_uploader_asset(banque.image, 'file') }}" class="img-thumbnail"/></td>
+                   <td>{{ banque.email }}</td>
+
+                   <td>
+                       <a href="{{ path('banque_show', {'id': banque.id}) }}">show</a>
+                   </td>
+               </tr>
+           {% else %}
+               <tr>
+                   <td colspan="15">no records found</td>
+               </tr>
+           {% endfor %}
+           </tbody>
+       </table>
+
+   </div>
+{% endblock %}

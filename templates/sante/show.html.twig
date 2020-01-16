@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sante{% endblock %}
+
+{% block body %}
+    <h1>Sante</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sante.id }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ sante.region }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ sante.departement }}</td>
+            </tr>
+            <tr>
+                <th>Localite</th>
+                <td>{{ sante.localite }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ sante.type }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ sante.nom }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ sante.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ sante.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ sante.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ sante.email }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ sante.heure }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ sante.website }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ sante.service }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sante_index') }}">back to list</a>
+
+    <a href="{{ path('sante_edit', {'id': sante.id}) }}">edit</a>
+
+    {{ include('sante/_delete_form.html.twig') }}
+{% endblock %}

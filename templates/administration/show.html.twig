@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+
+    <table class="table container">
+        <h1>Administration</h1>
+        <tbody>
+           <tr>
+               <td><img src="{{ vich_uploader_asset(administration.image, 'file') }}" class="img-fluid" style="height: 400px !important;"/></td>
+           </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ administration.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ administration.nom }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ administration.region }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ administration.departement }}</td>
+            </tr>
+            <tr>
+                <th>Commune</th>
+                <td>{{ administration.commune }}</td>
+            </tr>
+            <tr>
+                <th>Localite</th>
+                <td>{{ administration.localite }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ administration.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ administration.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ administration.email }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ administration.website }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ administration.service }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('administration_index') }}">back to list</a>
+
+    <a href="{{ path('administration_edit', {'id': administration.id}) }}">edit</a>
+
+    {{ include('administration/_delete_form.html.twig') }}
+{% endblock %}
